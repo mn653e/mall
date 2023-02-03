@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <style>
+      h1 {
+        color: purple;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+      }
+      .box {
+        padding: 20px;
+        background-color: lightgray;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 20px;
+      }
+      .yes-no {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      .yes {
+        margin-right: 20px;
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .no {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      img {
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Mall!</h1>
+    <div class="container">
+      <div class="box">
+        <p>Would you like to buy a toy and a hat?</p>
+        <img src="https://i.imgur.com/KOVKNzZ.jpg" alt="toy">
+        <img src="https://i.imgur.com/uOO2p2O.jpg" alt="hat">
+        <div class="yes-no">
+          <div class="yes">Yes, I want to buy that</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const container = document.querySelector('.container');
+      container.addEventListener('click', event => {
+        const target = event.target;
+        if (target.classList.contains('yes')) {
+          if (target.innerText === "Yes, I want to buy that") {
+            container.innerHTML = `
+              <div class="box">
+                <p>Do you have $5?</p>
+                <div class="yes-no">
+                  <div class="yes">Yes</div>
+                  <div class="no">No</div>
+                </div>
+              </div>
+            `;
+          } else if (target.innerText === "Yes") {
+            container.innerHTML = `
+              <div class="box">
+                <p style="color: green">Congratulations on Your Purchase!</p>
+              </div>
+            `;
+          }
+        } else if (target.classList.contains('no')) {
+          container.innerHTML = `
+            <div class="box">
+              <p style="color: red">Sorry, You Need Money</p>
+            </div>
+          `;
+        }
+      });
+    </script>
+  </body>
+</html>
